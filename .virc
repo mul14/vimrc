@@ -1,0 +1,46 @@
+if has('vim_starting')
+    set nocompatible      " Be iMproved
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+"" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+"" Change color scheme
+NeoBundle 'tomasr/molokai'
+colorscheme molokai
+
+syntax enable         " Enable syntax highlight
+set showcmd
+set wildmenu
+
+set hlsearch ignorecase incsearch
+nmap <silent> <leader>/ :silent :nohlsearch<CR>
+
+
+"" =========== Scrolling ==========
+set scrolloff=5         " Mulai scroll kalau baris dibawah udah berjarak 5 lines
+set sidescroll=1        " Aktifkan scroll kesamping
+set sidescrolloff=15    " Mulai scroll kalau jarak kesamping udah 15 lines
+
+set number              " Show line number
+set cursorline          " Highlight current line
+
+"" Remove all trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+"" Use white-space instead of tab
+set expandtab
+set tabstop=4
+retab
+set shiftwidth=4
+
+"" Easy indentation
+nnoremap <tab> >>
+noremap <s-tab> <esc><<
+inoremap <s-tab> <esc><<i
+
+"" Easy exit insert mode
+imap jj <esc>
